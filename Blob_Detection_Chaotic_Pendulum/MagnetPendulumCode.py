@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 !gdown https://drive.google.com/uc?id=101sgazgxxT1bUDyTLVYlr3i1H2VCAd2m # Control
 !gdown https://drive.google.com/uc?id=1D1XbF5SdQ8lJNb_IFyYbHMI5w7ukY8xs #W/ magnets
 
