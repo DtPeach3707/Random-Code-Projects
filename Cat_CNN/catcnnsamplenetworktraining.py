@@ -11,10 +11,10 @@ import matplotlib.pyplot as plt
 seed = 1
 np.random.seed(seed)
 random.set_seed(seed)
-classifier = Sequential()
-classifier.add(Conv2D(64, (3, 3), input_shape = (64, 48, 3), activation = 'relu'))
+classifier = Sequential() 
+classifier.add(Conv2D(64, (3, 3), input_shape = (64, 48, 3), activation = 'relu')) 
 classifier.add(Conv2D(32, (3, 3), input_shape = (64, 48, 3), activation = 'relu'))
-classifier.add(MaxPool2D(2, 2))
+classifier.add(MaxPool2D(2, 2)) #2 MaxPools for lessening the amount of trained parameters in the network
 classifier.add(Conv2D(32, (3, 3), input_shape = (64, 48, 3), activation = 'relu'))
 classifier.add(MaxPool2D(2, 2))
 classifier.add(Flatten())
@@ -28,7 +28,6 @@ classifier.add(Dense(64, activation = 'relu'))
 classifier.add(Dense(64, activation = 'relu'))
 classifier.add(Dense(1, activation = 'sigmoid'))
 classifier.compile(optimizer = 'sgd', loss = 'binary_crossentropy', metrics = ['accuracy'])
-print (classifier.summary())
 epochs = 2000
 train_datagen = ImageDataGenerator(rescale = 1./255.0, shear_range = 0.3, zoom_range = 0.1, horizontal_flip = True, vertical_flip = True, width_shift_range = 0.2, height_shift_range = 0.2) #Set up image directories
 test_datagen = ImageDataGenerator(rescale = 1./255.0, shear_range = 0.3, zoom_range = 0.1, horizontal_flip = True, vertical_flip = True, width_shift_range = 0.2, height_shift_range = 0.2)
