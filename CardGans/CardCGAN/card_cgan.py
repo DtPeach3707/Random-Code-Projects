@@ -2,6 +2,8 @@
 """Card GAN
 
 Code supposed to be executed through Google Colab Notebook
+
+zip folder and google drive made by Maxim Ziatdinov (citation below)
 """
 import cv2
 import numpy as np
@@ -261,3 +263,8 @@ for fil in filelist:
   fil = Image.open(path)
   frames.append(fil)
 frames[0].save('Card_Training.gif', format='GIF', append_images=frames[1:], save_all=True, duration = 300, loop = 0)
+
+'''
+1. Ziatdinov, M.; Kalinin, S. V., Enter the j(r)VAE: divide, (rotate), and order... the cards. 
+Towards data Science. 2021. https://towardsdatascience.com/enter-the-j-r-vae-divide-rotate-and-order-the-cards-9d10c6633726
+'''
