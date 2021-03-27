@@ -225,7 +225,7 @@ def build_and_train_models():
     x_train = np.reshape(x_train, [x_train.shape[0], x_train.shape[1], x_train.shape[2], 1])
     x_train = x_train.astype('float32') / 255
     model_name = "cgan_card"
-    latent_size = 2
+    latent_size = 4
     batch_size = 64
     train_steps = 40000
     lr = 1e-4
