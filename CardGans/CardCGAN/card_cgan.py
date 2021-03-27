@@ -3,7 +3,7 @@
 
 Code supposed to be executed through Google Colab Notebook
 
-zip folder and google drive made by Maxim Ziatdinov (citation below)
+zip folder and google drive dataset made by Maxim Ziatdinov (citation below)
 """
 import cv2
 import numpy as np
