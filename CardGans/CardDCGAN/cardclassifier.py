@@ -1,16 +1,34 @@
-# -*- coding: utf-8 -*-
+
 """
 Code supposed to be executed through Google Colab Notebook
     
 Card data credited to Maxim Ziatdinov (citation below)
-"""
 
+Generates a classifier trained on same augmented card dataset as used
+for dcGAN
+"""
+'''
+Code for downloading data and importing libraries
+'''
 !gdown https://drive.google.com/uc?id=1AyGHVflbIjzinkKBURHNVDx1wWg9JixB
 !unzip cards.zip
-
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image
+import numpy as np #Importing needed libraries
+from tensorflow import random
+from keras import losses
+from keras.models import Sequential
+from keras.layers import Dense, Activation, Dropout, Conv2D, MaxPool2D, Flatten
+from keras.preprocessing import image
+from keras.regularizers import l1, l2, l1_l2
+from keras.preprocessing.image import ImageDataGenerator
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+'''
+Code for preprocessing images
+'''
 card1 = cv2.resize(cv2.imread("cards/card1.JPG", cv2.IMREAD_GRAYSCALE), (48, 48))
 card2 = cv2.resize(cv2.imread("cards/card2.JPG", cv2.IMREAD_GRAYSCALE), (48, 48))
 card3 = cv2.resize(cv2.imread("cards/card3.JPG", cv2.IMREAD_GRAYSCALE), (48, 48))
@@ -19,8 +37,6 @@ cv2.imwrite('/content/Card_1.jpg', card1)
 cv2.imwrite('/content/Card_2.jpg', card2)
 cv2.imwrite('/content/Card_3.jpg', card3)
 cv2.imwrite('/content/Card_4.jpg', card4)
-
-from PIL import Image
 card1 = Image.open('/content/Card_1.jpg')
 card2 = Image.open('/content/Card_2.jpg')
 card3 = Image.open('/content/Card_3.jpg')
@@ -97,21 +113,10 @@ index_array1 = np.array(index_array1)
 index_array2 = np.array(index_array2)
 index_array3 = np.array(index_array3)
 index_array4 = np.array(index_array4)
-FinalCards = np.concatenate((Card1, Card2, Card3, Card4), axis = 0)
 Cards = [Card1, Card2, Card3, Card4]
-print (FinalCards.shape)
-
-import numpy as np #Importing needed libraries
-from tensorflow import random
-from keras import losses
-from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout, Conv2D, MaxPool2D, Flatten
-from keras.preprocessing import image
-from keras.regularizers import l1, l2, l1_l2
-from keras.preprocessing.image import ImageDataGenerator
-import matplotlib.pyplot as plt
-import pdb
-from sklearn.model_selection import train_test_split
+'''
+Code for building, training, and saving the classifier
+'''
 Xtrain_set1, Xtest_set1, ytrain1, ytest1 = train_test_split(Card1, index_array1, test_size = 0.25)
 Xtrain_set2, Xtest_set2, ytrain2, ytest2 = train_test_split(Card2, index_array2, test_size = 0.25)
 Xtrain_set3, Xtest_set3, ytrain3, ytest3 = train_test_split(Card3, index_array3, test_size = 0.25)
@@ -120,14 +125,8 @@ X_train = np.concatenate((Xtrain_set1, Xtrain_set2, Xtrain_set3, Xtrain_set4))
 X_test = np.concatenate((Xtest_set1, Xtest_set2, Xtest_set3, Xtest_set4))
 y_train = np.concatenate((ytrain1, ytrain2, ytrain3, ytrain4))
 y_test = np.concatenate((ytest1, ytest2, ytest3, ytest4))
-model = Sequential([
-    Flatten(input_shape=(48, 48)),
-    Dense(128, activation='relu'),
-    Dense(4)
-])
-model.compile(optimizer='adam',
-              loss=losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+model = Sequential([Flatten(input_shape=(48, 48)), Dense(128, activation='relu'), Dense(4)])
+model.compile(optimizer='adam', loss=losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
 model.fit(X_train, y_train, epochs = 40)
 test_loss, test_acc = model.evaluate(X_test,  y_test, verbose=2)
 print('\nTest accuracy:', test_acc)
