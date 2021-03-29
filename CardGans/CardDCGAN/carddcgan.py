@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 
 Code supposed to be executed through Google Colab
