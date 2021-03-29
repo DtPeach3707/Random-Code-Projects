@@ -339,3 +339,7 @@ plt.title("Latent space values' influence on class")
 plt.legend(loc = 'upper left')
 plt.savefig('latent_space_graph.png')
 plt.show()
+'''
+1. Ziatdinov, M.; Kalinin, S. V., Enter the j(r)VAE: divide, (rotate), and order... the cards. 
+Towards data Science. 2021. https://towardsdatascience.com/enter-the-j-r-vae-divide-rotate-and-order-the-cards-9d10c6633726
+'''
