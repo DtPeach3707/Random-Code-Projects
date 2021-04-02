@@ -16,7 +16,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
-import numpy as np #Importing needed libraries
+import numpy as np 
 from tensorflow import random
 from keras import losses
 from keras.models import Sequential
