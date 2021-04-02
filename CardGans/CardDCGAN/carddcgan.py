@@ -3,6 +3,8 @@
 
 Code supposed to be executed through Google Colab
 
+Original notebook can be found here: https://colab.research.google.com/drive/1RZ6x-GNPQfbL1eWMYPU0S6g-UAZybUAQ?usp=sharing
+
 Card data credited to Maxim Ziatdinov (citation below)
 
 Has all the code to generate the gif, the dcgan h5, and the graph
@@ -105,11 +107,45 @@ def transform_preprocess(image):
     final_images.append(np.array(image))
   final_images = np.array(final_images)
   return final_images
+index_array1 = []
+index_array2 = []
+index_array3 = []
+index_array4 = []
 Card1 = transform_preprocess(card1)
+for i in range(Card1.shape[0]):
+  index_array1.append(0)
 Card2 = transform_preprocess(card2)
+for i in range(Card2.shape[0]):
+  index_array2.append(0)
 Card3 = transform_preprocess(card3)
+for i in range(Card3.shape[0]):
+  index_array3.append(0)
 Card4 = transform_preprocess(card4)
+for i in range(Card4.shape[0]):
+  index_array4.append(0)
 FinalCards = np.concatenate((Card1, Card2, Card3, Card4), axis = 0)
+'''
+Code for building, training, and saving the classifier
+'''
+import numpy as np #Importing needed libraries
+from keras import losses
+from keras.models import Sequential
+from keras.layers import Dense, Activation, Dropout, Conv2D, MaxPool2D, Flatten
+from sklearn.model_selection import train_test_split
+Xtrain_set1, Xtest_set1, ytrain1, ytest1 = train_test_split(Card1, index_array1, test_size = 0.25)
+Xtrain_set2, Xtest_set2, ytrain2, ytest2 = train_test_split(Card2, index_array2, test_size = 0.25)
+Xtrain_set3, Xtest_set3, ytrain3, ytest3 = train_test_split(Card3, index_array3, test_size = 0.25)
+Xtrain_set4, Xtest_set4, ytrain4, ytest4 = train_test_split(Card4, index_array4, test_size = 0.25)
+X_train = np.concatenate((Xtrain_set1, Xtrain_set2, Xtrain_set3, Xtrain_set4)) 
+X_test = np.concatenate((Xtest_set1, Xtest_set2, Xtest_set3, Xtest_set4))
+y_train = np.concatenate((ytrain1, ytrain2, ytrain3, ytrain4))
+y_test = np.concatenate((ytest1, ytest2, ytest3, ytest4))
+model = Sequential([Flatten(input_shape=(48, 48)), Dense(128, activation='relu'), Dense(4)])
+model.compile(optimizer='adam', loss=losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
+model.fit(X_train, y_train, epochs = 40)
+test_loss, test_acc = model.evaluate(X_test,  y_test, verbose=2)
+print('\nTest accuracy:', test_acc)
+model.save('Card_Classifier.h5')
 '''
 Code for building, training, and saving the dcGAN
 '''
