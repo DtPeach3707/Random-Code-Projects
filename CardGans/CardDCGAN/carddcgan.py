@@ -1,13 +1,12 @@
-
 """
-
 Code supposed to be executed through Google Colab
 
-Original notebook can be found here: https://colab.research.google.com/drive/1RZ6x-GNPQfbL1eWMYPU0S6g-UAZybUAQ?usp=sharing
+Original notebook where the code comes from can be found here: https://colab.research.google.com/drive/1RZ6x-GNPQfbL1eWMYPU0S6g-UAZybUAQ?usp=sharing
+(slightly reformatted so it can all run in one cell)
 
 Card data credited to Maxim Ziatdinov (citation below)
 
-Has all the code to generate the gif, the dcgan h5, and the graph
+Has all the code to generate the gif, the classifier, the dcgan h5, and the graph
 """
 
 !gdown https://drive.google.com/uc?id=1AyGHVflbIjzinkKBURHNVDx1wWg9JixB
