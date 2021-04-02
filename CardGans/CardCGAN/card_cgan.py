@@ -1,7 +1,8 @@
 
 """Card CGAN
 
-Code supposed to be executed through Google Colab Notebook
+Code supposed to be executed through Google Colab Notebook. Original found here: https://colab.research.google.com/drive/1_XUcRF-DqZS-osdDkwXEX4MGdcgzYwGs?usp=sharing
+(Reformatted so it could all be executed in one cell)
 
 zip folder and google drive dataset made by Maxim Ziatdinov (citation below)
 """
@@ -256,6 +257,9 @@ def build_and_train_models():
     params = (batch_size, latent_size, train_steps, num_labels, model_name)
     train(models, data, params)
 build_and_train_models()
+'''
+Code for making the gif
+'''
 datadir = '/content/gan'
 filelist = sorted(os.listdir(datadir))
 frames = []
