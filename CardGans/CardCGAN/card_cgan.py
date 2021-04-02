@@ -1,5 +1,5 @@
 
-"""Card GAN
+"""Card CGAN
 
 Code supposed to be executed through Google Colab Notebook
 
