@@ -1,2 +1,7 @@
 # Random-Code-Projects
-Some random projects that I have done over time . . . 
+Projects I have done to better my capabilities in programming
+Projects include:
+  - Cat Classifier
+  - Card GANs
+  - Blob detection
+  - More in progress!
