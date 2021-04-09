@@ -4,6 +4,6 @@ This respoitory is a compilation of projects I have done to better my capabiliti
 Projects include:
   - Cat Classifier
   - Card GANs
-  - Blob detection
+  - Blob detection of a magnetic pendulum
   - More in progress!
   - Even more to come!
