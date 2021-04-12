@@ -5,5 +5,5 @@ Projects include:
   - Cat Classifier
   - Card GANs
   - Blob detection of a magnetic pendulum
-  - More in progress!
+  - More in progress (Cat GAN, Cat detector, etc.)!
   - Even more to come!
