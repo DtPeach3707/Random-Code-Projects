@@ -1,6 +1,6 @@
 '''
 Code for solving Mario Kart DS Figure 8 Circuit (uses DeSmuMe Nintendo DS Emulator)
-Control Hotkeys:
+Control keys:
 X: accelerate
 Q: Item
 Right arrow key: Turn right
