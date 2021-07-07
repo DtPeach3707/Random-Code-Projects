@@ -22,7 +22,7 @@ Bottom screen pixel made by custom Lua Script file that runs in tandem to this c
 One race is one episode (uses more reference pixels to determine when finished)
 '''
 from tensorflow.keras.layers import Dense, Input, Flatten, Conv3D, MaxPool3D
-from pynput.keyboard import Key, Controller, Events
+from pynput.keyboard import Key, Controller
 from PIL import ImageGrab
 from tensorflow.keras.models import Model
 import time
