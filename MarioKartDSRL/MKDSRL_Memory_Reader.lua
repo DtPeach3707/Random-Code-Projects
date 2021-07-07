@@ -16,7 +16,7 @@ local xPos, zPos, xPosPrev, zPosPrev, realspeed = 0,0,0,0 -- Positions to determ
 local angle, driftangle, ref_angle = 0,0,0 -- Angle positions to help determine wrong direction
 local chkpnt_ang = {16380, 16380, 20805, 24812, 28650, -30861, -23773, -17975, -15386, -11925,
                     -8233, -8233, -8233, -8233, -8233, -8233, -14276, -18273, -27352, 29514, 26495, 
-                    18165, 16380, 16380, 16380, 16380} -- Angles corresponding to right direction at each checkpoint
+                    18165, 16380, 16380, 16380, 16380} -- Angles corresponding to right direction at each checkpoint (according to memory of the game)
 
 local b_val = 0 -- Value of blue value that will be displayed
 local g_val = 0 -- Value of green value that will be displayed
