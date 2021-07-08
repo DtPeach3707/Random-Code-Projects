@@ -185,18 +185,11 @@ class DQN():
         else:
             print("-------------DQN------------")
         if load: #Can load in weight file to continue training
-            if self.ddqn:
-                try: 
-                    self.target_q_model.load_weights('ddqn_MKDS.h5')
-                    self.q_model.load_weights('ddqn_MKDS.h5')
-                except FileNotFoundError:
-                    print("There isn't a file to be loaded")
-            else:
-                try:
-                    self.target_q_model.load_weights('dqn_MKDS.h5')
-                    self.q_model.load_weights('dqn_MKDS.h5')
-                except FileNotFoundError:
-                    print("There isn't a file to be loaded")
+            try: 
+                self.target_q_model.load_weights(self.weights_file)
+                self.q_model.load_weights(self.weights_file)
+            except FileNotFoundError:
+                print("There isn't a file to be loaded")
     def build_model(self, n_outputs): #  Network architecture
         inputs = Input(shape=(5, 84, 140, 3), name='state')
         conv = Conv3D(64, (2, 4, 4), activation='relu')(inputs)
