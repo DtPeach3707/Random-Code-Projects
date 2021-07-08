@@ -1,4 +1,4 @@
-'''
+"""
 Code for solving Mario Kart DS Figure 8 Circuit (uses DeSmuMe Nintendo DS Emulator)
 Control keys:
 X: accelerate
@@ -20,7 +20,7 @@ Uses one pixel of bottom screen to determine speed and direction (reward)
 Bottom screen pixel made by custom Lua Script file that runs in tandem to this code
 (more details on Lua Script in the Lua Script file)
 One race is one episode (uses more reference pixels to determine when finished)
-'''
+"""
 from tensorflow.keras.layers import Dense, Input, Flatten, Conv3D, MaxPool3D
 from pynput.keyboard import Key, Controller
 from PIL import ImageGrab
@@ -42,7 +42,7 @@ def get_screen():  # Retrieves screenshot of DS box
     return screen
 
 
-def is_equal(lis, lis2): #For RGB Value determination
+def is_equal(lis, lis2):  # For RGB Value determination
     i = len(lis2)
     if lis[0] == lis2[0]:
         for l in range(i - 1):
@@ -409,6 +409,6 @@ plt.plot(episodes, scores)
 plt.xlabel('Episode')
 plt.ylabel('Score')
 plt.show()
-#Saving weights
+#Saving weights of completed training
 agent.save_weights()
 
