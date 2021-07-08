@@ -374,7 +374,7 @@ for episode in range(episode_count):  # Main training loop
     item_lis = list(item_lis)
     agent.remember(item_lis[-1][0], item_lis[-1][1], item_lis[-1][2], item_lis[-1][3], True)
     race_length.append(len(agent.memory) - sum(race_length))
-    if episode > 9: #Only remembering last ten races to help with speed of training
+    if episode > 9: #Only remembering last ten races to help with speed of training. Better or worse resources may change this value. 
         agent.forget(race_length[0])
         race_length.pop(0)
     print(len(agent.memory))
