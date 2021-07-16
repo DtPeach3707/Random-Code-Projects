@@ -6,6 +6,7 @@ Projects include:
   - Card GANs
   - Blob detection of a magnetic pendulum
   - Cat detector
+  - A program that can play Mario Kart by itself
   - More in progress (Cool Raspberry Pi ML Projects, Autoencoders, etc.)!
   - Even more to come!
 
